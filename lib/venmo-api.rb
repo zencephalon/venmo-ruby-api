@@ -30,10 +30,10 @@ def access_token_for_code(auth_code)
     
   body = response.body
   if Integer(response.code) < 400
-  	body_hash = JSON.load body
-  	return body_hash["access_token"]
+    body_hash = JSON.load body
+    return body_hash["access_token"]
   else
-  	return ""
+    return ""
   end
 end
 
