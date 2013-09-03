@@ -13,7 +13,7 @@ VENMO_DEFAULT_SCOPES        = [	'access_profile',
 
 
 def redirect_to_venmo_auth_url
-	redirect VENMO_BASE_URL \
+  redirect VENMO_BASE_URL \
           + "oauth/authorize?client_id=" + VENMO_CLIENT_ID \
           + "&scope=" + VENMO_DEFAULT_SCOPES.join(',') \
           + "&response_type=code"
@@ -48,12 +48,12 @@ def process_payment(payment)
                                         "note" => payment.note})
 
   if Integer(response.code) < 400
-  	body = response.body
-  	body_hash = JSON.load body
-  	if body_hash["status"] == "PAYMENT_SETTLED"
-  		payment.instance_variable_set(:@status, 2)
-  		return true
-  	end
+    body = response.body
+    body_hash = JSON.load body
+    if body_hash["status"] == "PAYMENT_SETTLED"
+      payment.instance_variable_set(:@status, 2)
+      return true
+    end
   end
 
   payment.instance_variable_set(:@status_message, response.message)

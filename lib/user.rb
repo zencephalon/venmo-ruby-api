@@ -21,7 +21,7 @@ class User
 
   def self.my_friends
     if session["venmo_access_token"]
-
+      
     end
   end
 
